@@ -5,18 +5,18 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem'
 
 export class DemCandCard extends Component {
     render() {
+        console.log(this.props.candidate)
         return (
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                <Card.Img variant="top" src={this.props.candidate.img_url}/>
                 <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>{this.props.candidate.name}</Card.Title>
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
+                        Age {this.props.candidate.age}
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroupItem>Cras justo odio</ListGroupItem>
+
                     <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
                     <ListGroupItem>Vestibulum at eros</ListGroupItem>
                 </ListGroup>

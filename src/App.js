@@ -1,15 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import NavBar from './components/NavBar'
+import CandidateContainer from './containers/CandidateContainer'
+import PoliticianContainer from './containers/PoliticianContainer'
 
-function App() {
-  return (
-    <div >
-      <header >
-        Campaign Daddies
-      </header>
-    </div>
-  );
+export class App extends Component {
+  render() {
+    return (
+      <div className="app" >
+        <h1 className="title"> Campaign Daddies </h1>
+        <NavBar />
+        <CandidateContainer />
+        <PoliticianContainer />
+      </div>
+    )
+  }
 }
 
 export default App;

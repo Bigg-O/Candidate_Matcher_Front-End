@@ -17,7 +17,7 @@ export class DemCandCard extends Component {
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                     {candidate.issues.map(issue => (
-                        <ListGroupItem>{issue.name}</ListGroupItem>
+                    <ListGroupItem>{issue.name}: {issue.stance}</ListGroupItem>
                     ))}
                 </ListGroup>
                 <Card.Body>

@@ -11,7 +11,6 @@ export class YourPoliticians extends Component {
                 )}
             </CardDeck>
         )
-
     }
 }
 

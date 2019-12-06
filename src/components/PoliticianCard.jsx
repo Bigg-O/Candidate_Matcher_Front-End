@@ -8,18 +8,20 @@ export class PoliticianCard extends Component {
         console.log(this.props)
         return (
             <Card style={{ width: '18rem' }}>
+                <a href={this.props.official.urls} target="_blank">
                 <Card.Img variant="top" src={this.props.official.photoUrl} />
+                </a>
                 <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>{this.props.official.name}</Card.Title>
+                    {/* <Card.Title>{this.props.offices.name}</Card.Title> */}
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
+                        {this.props.official.party}
                     </Card.Text>
                 </Card.Body>
-                <ListGroup className="list-group-flush">
+                {/* <ListGroup className="list-group-flush">
                     <ListGroupItem>Cras justo odio</ListGroupItem>
                     <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                </ListGroup>
+                </ListGroup> */}
             </Card>        )
     }
 }

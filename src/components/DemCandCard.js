@@ -7,7 +7,7 @@ export class DemCandCard extends Component {
     render() {
         const { candidate } = this.props
         return (
-            <Card style={{ width: '18rem' }}>
+            <Card className="card border-dark mb-3 card text-black card bg-light mb-3" style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={candidate.img_url}/>
                 <Card.Body>
                     <Card.Title>{candidate.name}</Card.Title>
@@ -21,8 +21,7 @@ export class DemCandCard extends Component {
                     ))}
                 </ListGroup>
                 <Card.Body>
-                    <Card.Link href="#">Card Link</Card.Link>
-                    <Card.Link href="#">Another Link</Card.Link>
+                    <Card.Link href="#">Support {candidate.name}</Card.Link>
                 </Card.Body>
             </Card>
         )

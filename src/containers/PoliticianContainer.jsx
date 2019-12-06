@@ -34,7 +34,6 @@ export class PoliticianContainer extends Component {
   handleSubmission = e => {
     e.preventDefault();
     const street_address = e.target.formGridAddress1.value.split(" ");
-    console.log(street_address[2])
     let address = this.state.address;
     address.street_number = street_address[0];
     address.street_name = street_address[1];
@@ -46,7 +45,8 @@ export class PoliticianContainer extends Component {
       .then(uRepresentativeData => {
         this.setState({ uRepresentativeData })
         this.setState({ dataLoaded: true });
-      }); 
+      }) 
+      //.catch( )
   };
 
   render() {
@@ -61,7 +61,7 @@ export class PoliticianContainer extends Component {
             uRepresentativeData={this.state.uRepresentativeData}
           />
         ) : (
-          <h1>Don't worry about me for now</h1>
+          <h1></h1>
         )}
       </div>
     );

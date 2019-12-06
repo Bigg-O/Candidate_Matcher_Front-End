@@ -21,7 +21,7 @@ export class DemCandCard extends Component {
                     ))}
                 </ListGroup>
                 <Card.Body>
-                    <Card.Link href="#">Support {candidate.name}</Card.Link>
+                    <Card.Link target="_blank" href={candidate.url} >Support {candidate.name}</Card.Link>
                 </Card.Body>
             </Card>
         )

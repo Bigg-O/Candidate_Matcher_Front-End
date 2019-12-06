@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
+import './CandidateFilter.css'
 
 const ISSUES = ["Gun Control", "Immigration", "Health Care", "Wealth Tax", "Marijuana Legalization", "Defense Spending"]
+
+
 
 export class CandidateFilter extends Component {
     render() {

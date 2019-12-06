@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AddressSearch from "../components/AddressSearch";
 import YourPoliticians from "./YourPoliticians";
+import './PoliticianContainer.css'
 
 // DON'T FORGET TO DELETE IT BEFORE MAKEING IT PUBLIC!!!
 const API_KEY = "AIzaSyBMcyeCjZx8ICSYZ_UvfJUucHkZPtQtnoQ";
@@ -18,44 +19,46 @@ export class PoliticianContainer extends Component {
         state: null,
         zip: null
       },
-      representativeData: [],
+      uRepresentativeData: [],
       dataLoaded: false
     };
   }
 
-  fetchURL = () => {
+
+  upperFetchURL = () => {
     const { street_number, street_name, street_type } = this.state.address;
-    return `https://www.googleapis.com/civicinfo/v2/representatives?address=${street_number}%20${street_name}%20${street_type}&levels=country&key=${API_KEY}`;
-  };
+    return `https://www.googleapis.com/civicinfo/v2/representatives?address=${street_number}%20${street_name}%20${street_type}&key=${API_KEY}`
+ 
+  }
 
   handleSubmission = e => {
     e.preventDefault();
     const street_address = e.target.formGridAddress1.value.split(" ");
+    console.log(street_address[2])
     let address = this.state.address;
     address.street_number = street_address[0];
     address.street_name = street_address[1];
     address.street_type = street_address[2];
     this.setState({ address });
 
-    fetch(this.fetchURL())
+      fetch(this.upperFetchURL())
       .then(resp => resp.json())
-      .then(representativeData => {
-        console.log(representativeData)
-        this.setState({ representativeData });
+      .then(uRepresentativeData => {
+        this.setState({ uRepresentativeData })
         this.setState({ dataLoaded: true });
-      });
+      }); 
   };
 
   render() {
     return (
-      <div>
+      <div className="body">
         <h1>Find your current representatives!</h1>
         <AddressSearch onSubmit={this.handleSubmission} />
         <br />
 
         {this.state.dataLoaded ? (
           <YourPoliticians
-            representativeData={this.state.representativeData} 
+            uRepresentativeData={this.state.uRepresentativeData}
           />
         ) : (
           <h1>Don't worry about me for now</h1>
@@ -66,7 +69,3 @@ export class PoliticianContainer extends Component {
 }
 
 export default PoliticianContainer;
-
-// GET https://www.googleapis.com/civicinfo/v2/representatives?address=3607%20Greystone%20Dr&key=[YOUR_API_KEY] HTTP/1.1
-
-// Accept: application/json

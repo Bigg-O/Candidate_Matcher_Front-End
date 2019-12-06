@@ -5,6 +5,13 @@ import CardDeck from "react-bootstrap/CardDeck";
 
 const DEM_CANDIDATES_URL = "http://localhost:3001/candidates";
 
+const styles = {
+  center: {
+    marginLeft: "auto",
+    marginRight: "auto"
+  }
+}
+
 export class CandidateContainer extends Component {
   constructor() {
     super();
@@ -41,7 +48,9 @@ export class CandidateContainer extends Component {
           ))}
         </CardDeck>
         <br />
+        <div className={styles.center}>
         <CandidateFilter onChange={this.handleFiltering} />
+        </div>
       </div>
     );
   }

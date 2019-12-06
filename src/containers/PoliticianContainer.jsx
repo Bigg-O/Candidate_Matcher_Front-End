@@ -40,6 +40,7 @@ export class PoliticianContainer extends Component {
     fetch(this.fetchURL())
       .then(resp => resp.json())
       .then(representativeData => {
+        console.log(representativeData)
         this.setState({ representativeData });
         this.setState({ dataLoaded: true });
       });
@@ -54,7 +55,7 @@ export class PoliticianContainer extends Component {
 
         {this.state.dataLoaded ? (
           <YourPoliticians
-            representativeData={this.state.representativeData}
+            representativeData={this.state.representativeData} 
           />
         ) : (
           <h1>Don't worry about me for now</h1>
@@ -65,3 +66,7 @@ export class PoliticianContainer extends Component {
 }
 
 export default PoliticianContainer;
+
+// GET https://www.googleapis.com/civicinfo/v2/representatives?address=3607%20Greystone%20Dr&key=[YOUR_API_KEY] HTTP/1.1
+
+// Accept: application/json

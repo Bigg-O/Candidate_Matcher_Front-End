@@ -1,16 +1,50 @@
-import React, { Component } from 'react'
-import DemCandidates from './DemCandidates'
-import CandidateFilter from '../components/CandidateFilter'
+import React, { Component } from "react";
+import CandidateFilter from "../components/CandidateFilter";
+import DemCandCard from "../components/DemCandCard";
+import CardDeck from "react-bootstrap/CardDeck";
+
+const DEM_CANDIDATES_URL = "http://localhost:3001/candidates";
 
 export class CandidateContainer extends Component {
-    render() {
-        return (
-            <div>
-                <DemCandidates />
-                <CandidateFilter />
-            </div>
-        )
-    }
+  constructor() {
+    super();
+    this.state = {
+      candidates: [],
+      candidateIssues: []
+    };
+  }
+
+  handleFiltering = issueName => {
+    let candidateIssues = this.state.candidates
+
+    candidateIssues = candidateIssues.map(candidate => {
+      return candidate.issues.filter(issue => (
+            issue.name === issueName[0]
+      ))
+    });
+
+    this.setState({ candidateIssues });
+  };
+
+  componentDidMount() {
+    fetch(DEM_CANDIDATES_URL)
+      .then(resp => resp.json())
+      .then(candidates => this.setState({ candidates }));
+  }
+
+  render() {
+    return (
+      <div>
+        <CardDeck>
+          {this.state.candidates.map(candidate => (
+            <DemCandCard key={candidate.id} candidate={candidate} />
+          ))}
+        </CardDeck>
+        <br />
+        <CandidateFilter onChange={this.handleFiltering} />
+      </div>
+    );
+  }
 }
 
-export default CandidateContainer
+export default CandidateContainer;

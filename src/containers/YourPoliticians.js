@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import PoliticianCard from '../components/PoliticianCard'
+import CardDeck from 'react-bootstrap/CardDeck'
 
 export class YourPoliticians extends Component {
     render() {
         return (
-            <div>
-                <PoliticianCard />
-            </div>
+            <CardDeck>
+                {this.props.representativeData.officials.map(official =>
+                    <PoliticianCard official={official} />
+                )}
+            </CardDeck>
         )
+
     }
 }
 

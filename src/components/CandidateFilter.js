@@ -3,6 +3,7 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import './CandidateFilter.css'
+import Button from 'react-bootstrap/Button'
 
 const ISSUES = ["Gun Control", "Immigration", "Health Care", "Wealth Tax", "Marijuana Legalization", "Defense Spending"]
 
@@ -12,7 +13,7 @@ export class CandidateFilter extends Component {
     render() {
         return (
             <ButtonToolbar>
-                <ToggleButtonGroup type="checkbox" name="options" onChange={this.props.onChange}>
+                <ToggleButtonGroup type="radio" name="options" onChange={this.props.onChange}>
                     {ISSUES.map(issue => (
                         <ToggleButton
                             key={issue}
@@ -22,6 +23,7 @@ export class CandidateFilter extends Component {
                         </ToggleButton>
                     ))}
                 </ToggleButtonGroup>
+                <Button variant="success" onClick={this.props.onClick}>See All</Button>
             </ButtonToolbar>
         )
     }

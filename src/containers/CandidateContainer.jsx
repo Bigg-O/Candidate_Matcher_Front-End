@@ -17,40 +17,55 @@ export class CandidateContainer extends Component {
     super();
     this.state = {
       candidates: [],
-      candidateIssues: []
+      candidates_copy: []
     };
   }
 
-  handleFiltering = issueName => {
-    let candidateIssues = this.state.candidates
+  handleFiltering = inputIssue => {
+    this.setState({ candidates_copy: {...this.state.candidates} })
+    let candidates_copy = [...this.state.candidates_copy]
 
-    candidateIssues = candidateIssues.map(candidate => {
-      return candidate.issues.filter(issue => (
-            issue.name === issueName[0]
-      ))
-    });
+    this.state.candidates.forEach(candidate => {
+      candidate.issues.forEach(issue => {
+        if (issue.name === inputIssue) {
+          const i = this.state.candidates.indexOf(candidate);
+          const j = this.state.candidates[i].issues.indexOf(issue);
+          candidates_copy[i].issues = [this.state.candidates[i].issues[j]];
+        }
+      })
+    })
 
-    this.setState({ candidateIssues });
+    this.setState({ candidates_copy });
   };
+
+  handleReset = () => {
+    const candidates_copy = JSON.parse(JSON.stringify(this.state.candidates));
+    this.setState({ candidates_copy })
+  }
 
   componentDidMount() {
     fetch(DEM_CANDIDATES_URL)
       .then(resp => resp.json())
-      .then(candidates => this.setState({ candidates }));
+      .then(candidates => {
+        this.setState({ candidates })
+        const candidates_copy = JSON.parse(JSON.stringify(candidates));
+        this.setState({ candidates_copy })
+      });
   }
 
   render() {
     return (
       <div>
         <CardDeck>
-          {this.state.candidates.map(candidate => (
+          {this.state.candidates_copy.map(candidate => (
             <DemCandCard key={candidate.id} candidate={candidate} />
           ))}
         </CardDeck>
         <br />
-        <div className={styles.center}>
-        <CandidateFilter onChange={this.handleFiltering} />
-        </div>
+        <CandidateFilter
+          onClick={this.handleReset}
+          onChange={this.handleFiltering}
+        />
       </div>
     );
   }

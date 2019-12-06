@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel|Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Merriweather:900&display=swap');
 /* .app {
   background-image: url("https://c8.alamy.com/comp/RH5DY8/stars-american-flag-national-background-pattern-vector-illustration-RH5DY8.jpg");
 } */
 
 .app {
   /* font-family: Georgia;  */
-  font-family: 'Cinzel'
+  /* font-family: 'Cinzel' */
+  font-family: 'Merriweather'
 }
 
 .title {

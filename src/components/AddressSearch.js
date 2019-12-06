@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 export class AddressSearch extends Component {
     render() {
         return (
-            <Form>
+            <Form onSubmit={this.props.onSubmit}>
                 <Form.Group controlId="formGridAddress1">
                     <Form.Label>Address</Form.Label>
                     <Form.Control placeholder="1234 Main St" />
@@ -20,8 +20,7 @@ export class AddressSearch extends Component {
                     <Form.Group controlId="formGridState">
                         <Form.Label>State</Form.Label>
                         <Form.Control as="select">
-                            <option>Choose...</option>
-                            <option>...</option>
+                            <option></option>
                         </Form.Control>
                     </Form.Group>
 

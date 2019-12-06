@@ -8,8 +8,11 @@ export class App extends Component {
     return (
       <div className="app" >
         <h1 className="title"> Campaign Daddies </h1>
+        <br/>
         <NavBar />
+        <br/>
         <CandidateContainer />
+        <br/>
         <PoliticianContainer />
       </div>
     )

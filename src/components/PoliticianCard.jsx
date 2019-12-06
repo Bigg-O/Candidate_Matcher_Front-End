@@ -5,9 +5,10 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem'
 
 export class PoliticianCard extends Component {
     render() {
+        console.log(this.props)
         return (
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://s.marketwatch.com/public/resources/images/MW-HE557_bernie_ZH_20190225225334.jpg" />
+                <Card.Img variant="top" src={this.props.official.photoUrl} />
                 <Card.Body>
                     <Card.Title>Card Title</Card.Title>
                     <Card.Text>

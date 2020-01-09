@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import AddressSearch from "../components/AddressSearch";
 import YourPoliticians from "./YourPoliticians";
-import './PoliticianContainer.css'
+import "./PoliticianContainer.css";
 
-// DON'T FORGET TO DELETE IT BEFORE MAKEING IT PUBLIC!!!
-const API_KEY = "AIzaSyBMcyeCjZx8ICSYZ_UvfJUucHkZPtQtnoQ";
-// DON'T FORGET TO DELETE IT BEFORE MAKEING IT PUBLIC!!!
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export class PoliticianContainer extends Component {
   constructor() {
@@ -24,12 +22,10 @@ export class PoliticianContainer extends Component {
     };
   }
 
-
   upperFetchURL = () => {
     const { street_number, street_name, street_type } = this.state.address;
-    return `https://www.googleapis.com/civicinfo/v2/representatives?address=${street_number}%20${street_name}%20${street_type}&key=${API_KEY}`
- 
-  }
+    return `https://www.googleapis.com/civicinfo/v2/representatives?address=${street_number}%20${street_name}%20${street_type}&key=${API_KEY}`;
+  };
 
   handleSubmission = e => {
     e.preventDefault();
@@ -40,13 +36,13 @@ export class PoliticianContainer extends Component {
     address.street_type = street_address[2];
     this.setState({ address });
 
-      fetch(this.upperFetchURL())
+    fetch(this.upperFetchURL())
       .then(resp => resp.json())
       .then(uRepresentativeData => {
-        this.setState({ uRepresentativeData })
+        this.setState({ uRepresentativeData });
         this.setState({ dataLoaded: true });
-      }) 
-      //.catch( )
+      });
+    //.catch( )
   };
 
   render() {

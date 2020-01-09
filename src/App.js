@@ -7,18 +7,17 @@ import NavBar from './components/NavBar';
 
 export class App extends Component {
   render() {
-
     return (
       <Router>
-      <div className="app" >
-        <h1 className="title"> Campaign Daddies </h1>
-        <NavBar />
-        <Route exact path="/" component={CandidateContainer} />
-        <Route exact path="/politicians" component={PoliticianContainer} />
-        {/* <CandidateContainer />
+        <div className="app" >
+          <h1 className="title"> Candidate Matcher </h1>
+          <NavBar />
+          <Route exact path="/" component={CandidateContainer} />
+          <Route exact path="/politicians" component={PoliticianContainer} />
+          {/* <CandidateContainer />
         <br/>
         <PoliticianContainer /> */}
-      </div>
+        </div>
       </Router>
     )
   }

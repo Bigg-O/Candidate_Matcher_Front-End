@@ -3,7 +3,7 @@ import CandidateFilter from "../components/CandidateFilter";
 import DemCandCard from "../components/DemCandCard";
 import CardDeck from "react-bootstrap/CardDeck";
 
-const DEM_CANDIDATES_URL = "http://localhost:3001/candidates";
+const DEM_CANDIDATES_URL = "https://sleepy-bastion-46695.herokuapp.com/candidates";
 
 const styles = {
   center: {

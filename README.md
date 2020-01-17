@@ -1,3 +1,6 @@
+## Link to Candidate Matcher Backend:
+https://github.com/a4alaniz/Candidate_Matcher_backend
+
 # Candidate Matcher
 
 In an age where most of the major news networks are seeming to display a rising political bias, Candidate Matcher is intended to provide you with a short and sweet, unbiased comparative guide between the current major democratic candidates running for the 2020 election.
